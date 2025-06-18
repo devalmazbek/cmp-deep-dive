@@ -1,4 +1,18 @@
-<div id="status">
-    <app-new-ticket />
-    <p>Todo...</p>
+
+
+<div id="status" class="support-tickets">
+    <div id="tickets">
+        <ul>
+            @for (ticket of tickets; track ticket.id) {
+                <li>
+                    <app-ticket [ticket]="ticket" (ticketClose)="onCloseTicket(ticket.id)"/>
+                </li>
+            } @empty {
+                <p>No ticket available....</p>
+            }
+        </ul>
+    </div>
+    <div id="new-ticket">
+        <app-new-ticket (add)="onAddTicket($event)" />
+    </div>
 </div>
